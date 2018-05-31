@@ -22,7 +22,7 @@
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3">Collatieparser</h1>
-          <p>Bereken het aantal folia aan de hand van een collatieformule.</p>
+          <p>Bereken het aantal folia aan de hand van een collatieformule uit de <abbr title="Short Title Catalogue of the Netherlands">STCN</abbr>.</p>
           <p><a class="btn btn-primary btn-lg" href="https://github.com/LvanWissen/CollationParser" role="button">Meer lezen &raquo;</a></p>
         </div>
       </div>
@@ -36,7 +36,7 @@
                   <div class="form-group">
                     <label for="collateform">Collatie</label>
                     <input type="text" class="form-control form-control-lg" id="collateform" aria-describedby="colHelp" placeholder="Collatieformule" name="data">
-                    <small id="colHelp" class="form-text text-muted">Gecodeerd zoals in de STCN.</small>
+                    <small id="colHelp" class="form-text text-muted">Gecodeerd zoals in de STCN. Voorbeeld:</br>*`SUP`4`LO`(-*4) A-G`SUP`12`LO` H`SUP`8`LO` (H8 blank))</small>
                   </div>
                   <button type="submit" class="btn btn-primary">Bereken!</button>
                 </form>
@@ -48,9 +48,9 @@
             <h2>Recordnummer</h2>
                 <form action="result_ppn" method="post">
                   <div class="form-group">
-                    <label for="collateform">PPN-nummer uit de STCN</label>
-                    <input type="text" class="form-control form-control-lg" id="collateform" aria-describedby="colppn" placeholder="PPN" name="ppn">
-                    <small id="colppn" class="form-text text-muted">Uniek ID (Recordnummer) van de STCN.</small>
+                    <label for="collateform"><abbr title="Pica Production Number">PPN</abbr> uit de STCN</label>
+                    <input type="text" class="form-control form-control-lg" id="collateform" aria-describedby="colppn" placeholder="PPN (e.g. 05384288X)" name="ppn">
+                    <small id="colppn" class="form-text text-muted">Uniek ID (Recordnummer) van een titel in de STCN.</br>Link naar de <a href="http://picarta.nl/xslt/DB=3.11/" target="_blank">catalogus</a></small>
                   </div>
                   <button type="submit" class="btn btn-primary">Haal op en bereken!</button>
                 </form>
@@ -70,7 +70,7 @@
         <div class="card">
           <h5 class="card-header">Collatieformule</h5>
           <div class="card-body">
-            <h5 class="card-title">{{ collatieformule }}</h5>
+            <h5 class="card-title" style="font-family: 'Courier New', Courier, monospace">{{ collatieformule }}</h5>
             <p class="card-text"></p>
             <!--<a href="#" class="btn btn-primary">Go somewhere</a> ---->
           </div>
