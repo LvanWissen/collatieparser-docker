@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="static/favicon.ico">
+
+    <title>Collation Parser</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="static/bootstrap.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3">Collatieparser</h1>
+          <p>Bereken het aantal folia aan de hand van een collatieformule.</p>
+          <p><a class="btn btn-primary btn-lg" href="https://github.com/LvanWissen/CollationParser" role="button">Meer lezen &raquo;</a></p>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Collatieformule</h2>
+                <form action="result" method="post">
+                  <div class="form-group">
+                    <label for="collateform">Collatie</label>
+                    <input type="text" class="form-control form-control-lg" id="collateform" aria-describedby="colHelp" placeholder="Collatieformule" name="data">
+                    <small id="colHelp" class="form-text text-muted">Gecodeerd zoals in de STCN.</small>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Bereken!</button>
+                </form>
+
+
+          </div>
+
+          <div class="col-md-6">
+            <h2>Recordnummer</h2>
+                <form action="result_ppn" method="post">
+                  <div class="form-group">
+                    <label for="collateform">PPN-nummer uit de STCN</label>
+                    <input type="text" class="form-control form-control-lg" id="collateform" aria-describedby="colppn" placeholder="PPN" name="ppn">
+                    <small id="colppn" class="form-text text-muted">Uniek ID (Recordnummer) van de STCN.</small>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Haal op en bereken!</button>
+                </form>
+
+
+          </div>
+        </div>
+
+<hr>
+
+
+        <div class="row">
+            <h2>Resultaat</h2>
+        </div>
+    
+
+        <div class="card">
+          <h5 class="card-header">Collatieformule</h5>
+          <div class="card-body">
+            <h5 class="card-title">{{ collatieformule }}</h5>
+            <p class="card-text"></p>
+            <!--<a href="#" class="btn btn-primary">Go somewhere</a> ---->
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-12">
+            <p></p>
+            <h3>Katernen</h3>
+            
+            {% for e in result %}
+            <table>
+                 <tr>
+                    <td class="col-md-3">Katern(en)</td>
+                    <td class="col-md-3">{{ e['KATERN_START'] }} {{ e['KATERN_END'] }} {{ e['ONGESIGNEERD'] }}</td>
+                </tr>
+                 <tr>
+                    <td class="col-md-3">Formaat</td>
+                    <td class="col-md-3">{{ e['FORMAAT'] }}</td>
+                </tr>
+                 <tr>
+                    <td class="col-md-3">Aantal folia</td>
+                    <td class="col-md-3">{{ e['OMVANG'] }}</td>
+                </tr>
+                 <tr>
+                    <td class="col-md-3">Opmerkingen / correctie</td>
+                    <td class="col-md-3">{{ e['CORRECTIE'] }} {{ e['COMMENTAAR'] }}</td>
+                </tr>
+            </table>
+            <p></p>
+               {% endfor %}
+
+            <p>Totaal aantal folia: {{folia}}
+            
+          </div>
+    </div>
+
+
+
+        <hr>
+
+      </div> <!-- /container -->
+
+    </main>
+
+    <footer class="container">
+      <p>&copy; Leon van Wissen 2018</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="static/jquery-slim.min.js'"><\/script>')</script>
+    <script src="static/popper.min.js'"></script>
+    <script src="static/bootstrap.min.js'"></script>
+  </body>
+</html>
