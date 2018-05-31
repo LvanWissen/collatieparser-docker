@@ -1,0 +1,3 @@
+[submodule "CollationParser"]
+	path = CollationParser
+	url = https://github.com/LvanWissen/CollationParser.git
