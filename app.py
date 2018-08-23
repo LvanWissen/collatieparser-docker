@@ -10,14 +10,14 @@ def serve():
 
     return render_template('index.html')
 
-@app.route('/result', methods=['POST'])
+@app.route('/parse', methods=['GET', 'POST'])
 def process_data():
     """
     Process a collation formula from input in template. 
     """
 
+    collateformula = request.args.get('data')
     parser = CollationParser(verbose=True)
-    collateformula = request.form['data']
 
     # result
     folia, resultlist = parser.parse(collateformula, use_parselist=True)
